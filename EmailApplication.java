@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class EmailApplication {
@@ -8,6 +9,8 @@ public class EmailApplication {
     private GenerateEmployeeID generateEmployeeID;
     private RegisterDepartment registerDepartment;
     private String department;
+
+    private String password;
 
     public EmailApplication(){
 
@@ -50,13 +53,43 @@ public class EmailApplication {
         System.out.println("Employee ID: "+empID);
         System.out.println();
 
+
         System.out.println("Finding your HR contact details . . .\n");
 
         System.out.println("************************************************");
         System.out.println("Name: Rajesh Mehra");
         System.out.println("Phone Number: 9432123456");
         System.out.println("Work Phone: 456321");
-        System.out.println("************************************************");
+        System.out.println("************************************************\n");
+
+
+        System.out.println("Generating your company mail-id . . .");
+        System.out.println("Mail-id -> "+firstName.toLowerCase(Locale.ROOT)+"."+lastName.toLowerCase(Locale.ROOT)+"@abc.com");
+        this.password = generateCompanyPortalPassword.getPassword();
+        System.out.print("Password -> "+this.password);
+
+        while (true) {
+            System.out.println();
+            System.out.println("Do you want to change password (yes/no)");
+            String choice = scanner.next();
+
+            if ((choice.toUpperCase(Locale.ROOT)).equals("YES")) {
+                System.out.print("Enter new password: ");
+                String newPassword = scanner.nextLine();
+                scanner.nextLine();
+                this.password = newPassword;
+                System.out.println("Password changed successfully");
+                break;
+            } else if ((choice.toUpperCase(Locale.ROOT)).equals("NO")) {
+                System.out.println("Password changed successfully");
+                break;
+            } else {
+                System.out.println("Invalid Input");
+            }
+        }
+        System.out.println();
+
+
 
 
 
