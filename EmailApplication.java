@@ -48,6 +48,20 @@ public class EmailApplication {
         System.out.println("Generating Employee ID ...");
         String empID = generateEmployeeID.getID();
         System.out.println("Employee ID: "+empID);
+        System.out.println();
+
+        System.out.println("Finding your HR contact details . . .\n");
+
+        System.out.println("************************************************");
+        System.out.println("Name: Rajesh Mehra");
+        System.out.println("Phone Number: 9432123456");
+        System.out.println("Work Phone: 456321");
+        System.out.println("************************************************");
+
+
+
+
+
 
 
 
