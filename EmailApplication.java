@@ -4,11 +4,12 @@ import java.util.Scanner;
 public class EmailApplication {
     private String firstName;
     private String lastName;
-    private Scanner scanner ;
+    private Scanner scanner;
     private GenerateCompanyPortalPassword generateCompanyPortalPassword;
     private GenerateEmployeeID generateEmployeeID;
     private RegisterDepartment registerDepartment;
     private String department;
+    private String companyMailID;
 
     private String password;
 
@@ -18,7 +19,7 @@ public class EmailApplication {
 
     private String workPhoneNumber;
 
-    public EmailApplication(){
+    public EmailApplication() {
 
         scanner = new Scanner(System.in);
         generateCompanyPortalPassword = new GenerateCompanyPortalPassword();
@@ -27,7 +28,7 @@ public class EmailApplication {
     }
 
     // Method to start application
-    public void launchApplication(){
+    public void launchApplication() {
         System.out.println("Welcome ");
         System.out.println("I am happy to see you :)\n");
 
@@ -49,14 +50,13 @@ public class EmailApplication {
         System.out.println();
         System.out.print("Enter you department's code: ");
         int code = scanner.nextInt();
-        this.department = departmentList[code-1];
+        this.department = departmentList[code - 1];
         System.out.println("Department Registered Successfully\n");
-
 
 
         System.out.println("Generating Employee ID ...");
         String empID = generateEmployeeID.getID();
-        System.out.println("Employee ID: "+empID);
+        System.out.println("Employee ID: " + empID);
         System.out.println();
 
 
@@ -70,9 +70,10 @@ public class EmailApplication {
 
 
         System.out.println("Generating your company mail-id . . .");
-        System.out.println("Mail-id -> "+firstName.toLowerCase(Locale.ROOT)+"."+lastName.toLowerCase(Locale.ROOT)+"@abc.com");
+        this.companyMailID = firstName.toLowerCase(Locale.ROOT) + "." + lastName.toLowerCase(Locale.ROOT) + "@abc.com";
+        System.out.println("Mail-id -> " + this.companyMailID);
         this.password = generateCompanyPortalPassword.getPassword();
-        System.out.print("Password -> "+this.password);
+        System.out.print("Password -> " + this.password);
 
         while (true) {
             System.out.println();
@@ -96,7 +97,7 @@ public class EmailApplication {
         System.out.println();
 
 
-        System.out.println("Mail-Box Capacity: "+this.mailBoxCapacity);
+        System.out.println("Mail-Box Capacity: " + this.mailBoxCapacity);
         System.out.println();
 
         System.out.println("Enter your alternate mail-id");
@@ -106,27 +107,38 @@ public class EmailApplication {
 
         System.out.println("Setting up your work phone. . . ");
         this.workPhoneNumber = generateEmployeeID.getID();
-        System.out.println("Your work phone number is: "+this.workPhoneNumber);
+        System.out.println("Your work phone number is: " + this.workPhoneNumber);
 
         System.out.println();
         System.out.println();
-        System.out.println("We have successfully generated your profile");
+        System.out.println("We have successfully generated your profile\n\n");
 
+        summariseInformation();
 
+    }
 
+    public void summariseInformation() {
+        System.out.println("Summarizing all your Information . . .");
+        System.out.println();
+        String nameOutput = "Name: " + this.firstName + " " + this.lastName;
+        System.out.printf("%-45s%s%s", nameOutput, "Department: ", this.department);
+        System.out.println();
+        String mailOutput = "Mail-id: " + this.companyMailID;
+        System.out.printf("%-45s%s%s", mailOutput, "Password: ", this.password);
+        System.out.println();
+        System.out.print("Mail Box capacity: " + this.mailBoxCapacity);
+        System.out.println();
+        String mailIDOutput = "Alternate mail-id: " + this.alternateMailId;
 
-
-
-
-
-
-
-
-
-
-
-
-
+        System.out.printf("%-45s%s%s", mailIDOutput, "Work Phone: ", this.workPhoneNumber);
+        System.out.println();
+        System.out.println();
+        System.out.println("HR details: ");
+        System.out.println("************************************************");
+        System.out.println("Name: Rajesh Mehra                             *");
+        System.out.println("Phone Number: 9432123456                       *");
+        System.out.println("Work Phone: 456321                             *");
+        System.out.println("************************************************\n");
     }
 
 
