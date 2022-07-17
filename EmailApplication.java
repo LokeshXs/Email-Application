@@ -12,6 +12,12 @@ public class EmailApplication {
 
     private String password;
 
+    private int mailBoxCapacity = 500;
+
+    private String alternateMailId;
+
+    private String workPhoneNumber;
+
     public EmailApplication(){
 
         scanner = new Scanner(System.in);
@@ -81,13 +87,32 @@ public class EmailApplication {
                 System.out.println("Password changed successfully");
                 break;
             } else if ((choice.toUpperCase(Locale.ROOT)).equals("NO")) {
-                System.out.println("Password changed successfully");
+                System.out.println("Password saved successfully");
                 break;
             } else {
                 System.out.println("Invalid Input");
             }
         }
         System.out.println();
+
+
+        System.out.println("Mail-Box Capacity: "+this.mailBoxCapacity);
+        System.out.println();
+
+        System.out.println("Enter your alternate mail-id");
+        this.alternateMailId = scanner.next();
+        System.out.println("Alternate mail-id is saved successfully\n");
+
+
+        System.out.println("Setting up your work phone. . . ");
+        this.workPhoneNumber = generateEmployeeID.getID();
+        System.out.println("Your work phone number is: "+this.workPhoneNumber);
+
+        System.out.println();
+        System.out.println();
+        System.out.println("We have successfully generated your profile");
+
+
 
 
 
